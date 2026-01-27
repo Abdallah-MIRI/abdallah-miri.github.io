@@ -1,0 +1,28 @@
+title: Abdallah MIRI
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://abdallah-miri.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: miri
+github_username: abdallah-miri.github.com
+
+# Build settings
+theme: miri
+gems:
+  - jekyll-paginate-v2
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate-v2
+
+permalink: /:categories/:year/:title:output_ext
+
+exclude:
+  - node_modules
+  - package.json
+  - tailwind.config.js
+  - postcss.config.js
