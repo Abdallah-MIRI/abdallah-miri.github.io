@@ -31,15 +31,44 @@ h2, h3 {
   display: none;
 }
 
-.article-body img {
-  max-width: 150px;
-  height: auto;
-}
-
 .article-body h2 {
   font-size: 1.3rem;
   font-weight: bold;
   margin-top: 1.5rem;
+}
+
+.article-body h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+/* تنسيق رابط التحميل */
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 7px;
+  border-radius: 12px;
+  font-size: .75rem;
+  font-weight: 900;
+  text-decoration: none !important;
+  transition: all 0.3s ease-in-out;
+  
+  /* ألوانك الخاصة */
+  background-color: #b0ed8f; 
+  color: #0e2a4f !important;
+  box-shadow: 0 4px 15px rgba(176, 237, 143, 0.3);
+}
+
+.download-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(176, 237, 143, 0.5);
+  filter: brightness(1.05);
+}
+
+.download-link:active {
+  transform: scale(0.95);
 }
 
 /* تنسيق الحاوية الأساسي */
@@ -51,45 +80,63 @@ h2, h3 {
     direction: rtl;
 }
 
-/* تنسيق العناصر */
+/* تنسيق العناصر الأساسية */
 .toc-content .toc-entry {
     position: relative;
     margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
+    display: block; /* غيرناه من flex لـ block عشان المستويات الفرعية تنزل تحت */
 }
 
-/* تنسيق الروابط (الحالة الافتراضية) */
+/* تنسيق الروابط */
 .toc-content .toc-entry a {
-    color: #4b5563; /* رمادي */
+    color: #0e2a4f; /* الكحلي بتاعك */
     text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    background-color: white; /* عشان تغطي النقط اللي تحتها */
+    transition: all 0.3s ease;
+    background-color: white;
     padding-left: 10px;
     position: relative;
     z-index: 5;
-    font-weight: 500;
+    font-weight: 700;
+    display: inline-block; /* عشان ياخد مساحته بس والنقط تكمل جنبه */
 }
 
-/* تأثير الـ Hover و Active (تغيير اللون والخط) */
-.toc-content .toc-entry a:hover,
-.toc-content .toc-entry a:active,
-.toc-content .toc-entry a:focus {
-    color: #2563eb !important; /* أزرق */
-    text-decoration: underline !important;
-    text-underline-offset: 6px;
-    text-decoration-thickness: 2px;
+/* تأثير الـ Hover بالألوان الجديدة */
+.toc-content .toc-entry a:hover {
+    color: #0e2a4f !important;
+    background-color: #b0ed8f; /* الخلفية الخضراء الفاتحة */
+    border-radius: 4px;
 }
 
-/* النقط (الجدول) */
+/* النقط الخلفية */
 .toc-content .toc-entry::after {
-    content: "";
+    content: "....................................................................................................";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 8px;
-    border-bottom: 2px dotted #e5e7eb; /* نقط خفيفة */
+    bottom: 5px;
+    color: #e5e7eb; /* لون النقط */
+    overflow: hidden;
+    white-space: nowrap;
     z-index: 1;
+    font-family: monospace;
+}
+
+/* --- السر هنا: تنسيق المستوى الفرعي H3 --- */
+.toc-content .toc-h3 {
+  margin-top: 0;
+  margin-right: 1.2rem !important; /* إزاحة لليمين */
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.toc-content .toc-h3 a {
+    font-weight: 500; /* خط أخف للـ H3 */
+    color: #4b5563;
+}
+
+/* إخفاء النقط للمستويات الفرعية لو حابب شكل أهدى */
+.toc-content .toc-h3::after {
+    display: none; 
 }
 
 @media (max-width: 760px) {

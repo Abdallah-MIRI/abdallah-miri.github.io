@@ -23,6 +23,6 @@ JAVASCRIPT عبارة عن محرك أو عقل أى موقع ليه بسبب أ
 ```javascript
 console.log("hello from console developer tool");
 ```
-أو محرر أكواد زى Visual Studio Code ![محرر كود Visual Studio Code](/assets/image/text_editors/vscode.svg){: .mt-4 .w-20}
-[رابط التحميل  ↖](https://code.visualstudio.com/){: .text-sm}   
+أو محرر أكواد زى Visual Studio Code ![محرر كود Visual Studio Code](/assets/image/text_editors/vscode.svg){: .mt-4 .w-30}
+[رابط التحميل  ↖](https://code.visualstudio.com/){:target="_blank" rel="noopener" .download-link .mb-2}   
 دا كدة تعريف سريع للغة ولكن الغة كبيرة وليها استخدامات كتير هنتكلم عنها فى منشور اخر 😉
