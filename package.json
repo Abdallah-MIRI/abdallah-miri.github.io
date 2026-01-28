@@ -17,6 +17,7 @@
     "jekyll": "bundle exec jekyll serve --livereload",
     "tailwindcss": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "build:css": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify --watch",
+    "git:all": "git add . && aicommit2 && git push",
     "start": "concurrently \"npm run jekyll\" \"npm run build:css\""
   },
   "repository": {

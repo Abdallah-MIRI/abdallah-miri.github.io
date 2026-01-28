@@ -27,8 +27,15 @@ h2, h3 {
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-#btn-menu {
-  display: none;
+/* لما يكون الزرار عليه كلاس active */
+#btn-menu.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+#btn-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+#btn-menu.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
 }
 
 .article-body h2 {
@@ -163,7 +170,7 @@ h2, h3 {
   }
 
   #btn-menu {
-    display: block;
+    display: flex;
     top: 50%;
     left: 20px;
     transform: translate(0, -50%);

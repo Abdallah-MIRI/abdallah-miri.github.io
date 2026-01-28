@@ -1,38 +1,76 @@
-<header class="header-main headr-menu-icon fixed top-0 left-1/2 -translate-x-1/2 w-full z-100">
+<header
+  class="header-main headr-menu-icon fixed top-0 left-1/2 -translate-x-1/2 w-full z-100"
+>
   <div class="container w-[93%] sm:max-w-247.5 mr-auto ml-auto">
     <div
-      class="inner-content relative w-full flex justify-between items-center bg-[#FAF9F9] min-h-17.5 border-[#F5EFEF] border-2 rounded-[40px] mt-5 pl-3 pr-3 pt-3 pb-3">
+      class="inner-content relative w-full flex justify-between items-center bg-[#FAF9F9] min-h-17.5 border-[#F5EFEF] border-2 rounded-[40px] mt-5 pl-3 pr-3 pt-3 pb-3"
+    >
       <!-- ||| Logo Website ||| -->
       <a href="{{ site.url }}" id="logo" class="w-15 block">
-        <img src="/assets/image/abdallah_miri_logo.svg" alt="Logo Abdallah Miri Website" loading="lazy" class="max-w-full h-auto" />
+        <img
+          src="/assets/image/abdallah_miri_logo.svg"
+          alt="Logo Abdallah Miri Website"
+          loading="lazy"
+          class="max-w-full h-auto"
+        />
       </a>
 
       <!-- ||| NavBAR ||| -->
       <nav class="main-nav">
         <ul class="menu-header list-none flex items-center justify-center">
           <li class="item-list">
-            <a href="/categories/"
-              class="link-item-nav text-[#0E2A4F] no-underline ms-2 hover:text-[#2d7aec] flex items-center justify-center"><img
-                src="/assets/image/Layer 1.svg" alt="icon menu link" loading="eager" class="me-1" /><span
-                class="block">الأقسام</span></a>
+            <a
+              href="/categories/"
+              class="link-item-nav text-[#0E2A4F] no-underline ms-2 hover:text-[#2d7aec] flex items-center justify-center"
+              ><img
+                src="/assets/image/Layer 1.svg"
+                alt="icon menu link"
+                loading="eager"
+                class="me-1"
+              /><span class="block">الأقسام</span></a
+            >
           </li>
           <li class="item-list">
-            <a href="#"
-              class="link-item-nav text-[#0E2A4F] no-underline ms-2 hover:text-[#2d7aec] flex items-center justify-center"><img
-                src="/assets/image/Layer 1 (1).svg" alt="icon menu link" loading="eager" class="me-1" /><span
-                class="block">مسارات</span></a>
+            <a
+              href="#"
+              class="link-item-nav text-[#0E2A4F] no-underline ms-2 hover:text-[#2d7aec] flex items-center justify-center"
+              ><img
+                src="/assets/image/Layer 1 (1).svg"
+                alt="icon menu link"
+                loading="eager"
+                class="me-1"
+              /><span class="block">مسارات</span></a
+            >
           </li>
           <li class="item-list">
-            <a href="#"
-              class="link-item-nav text-[#0E2A4F] no-underline ms-2 hover:text-[#2d7aec] flex items-center justify-center"><img
-                src="/assets/image/Group 2.svg" alt="icon menu link" loading="eager" class="me-1" /><span
-                class="block">عنى</span></a>
+            <a
+              href="#"
+              class="link-item-nav text-[#0E2A4F] no-underline ms-2 hover:text-[#2d7aec] flex items-center justify-center"
+              ><img
+                src="/assets/image/Group 2.svg"
+                alt="icon menu link"
+                loading="eager"
+                class="me-1"
+              /><span class="block">عنى</span></a
+            >
           </li>
-
         </ul>
       </nav>
 
-      <button id="btn-menu" class="absolute left-10 top-5 bg-black w-3 h-3"></button>
+      <button
+        id="btn-menu"
+        class="body-menu absolute left-10 top-5 flex-col justify-between w-8 h-6 cursor-pointer border-none group hidden"
+      >
+        <span
+          class="w-full h-1 bg-black rounded-lg transition-all duration-300"
+        ></span>
+        <span
+          class="w-full h-1 bg-black rounded-lg transition-all duration-300"
+        ></span>
+        <span
+          class="w-full h-1 bg-black rounded-lg transition-all duration-300"
+        ></span>
+      </button>
     </div>
   </div>
 </header>
