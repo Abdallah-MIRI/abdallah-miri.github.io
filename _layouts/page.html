@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="{% if site.directions %}{{ site.directions }}{% else %}ltr{% endif %}" lang="{{ page.lang | default: site.lang }}">
 {% include head.html %}
-<body>
+<body id="body-effect" class="text-[#0E2A4F] body-menu">
   {% include header.html %}
   <main class="page-style pt-[8em]">
     {{ content }}
