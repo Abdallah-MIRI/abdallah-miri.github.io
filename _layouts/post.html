@@ -2,4 +2,120 @@
 layout: default
 ---
 
-{{ content }}
+<main class="post-style mt-30">
+  <div
+    class="container w-[93%] sm:max-w-247.5 max-w-247.5 mr-auto ml-auto min-w-3xs p-5 pt-0 bg-white rounded-2xl shadow-sm border border-gray-300"
+  >
+    {% include breadcrumbs.html %}
+    <article class="article-body max-w-4xl mx-auto px-4 py-10">
+      <h1 class="text-center mt-7 font-bold text-3xl">{{ page.title }}</h1>
+      <div class="text-center space-y-2 mt-4 mb-8">
+        <p class="text-gray-600 flex items-center justify-center gap-1">
+          <span>☕ وقت القراءة:</span>
+          {% assign words = content | number_of_words %} {% assign minutes =
+          words | divided_by: 180 | at_least: 1 %}
+
+          <span class="font-medium">
+            {% if minutes == 1 %} دقيقة واحدة {% elsif minutes == 2 %} دقيقتان
+            {% elsif minutes >= 3 and minutes <= 10 %} {{ minutes }} دقائق {%
+            else %} {{ minutes }} دقيقة {% endif %}
+          </span>
+        </p>
+
+        <time class="text-gray-400 text-sm block">
+          📅 نُشر في: {{ page.date | date: "%d" }} {% assign month = page.date |
+          date: "%m" %} {% case month %} {% when '01' %}يناير{% when '02'
+          %}فبراير{% when '03' %}مارس {% when '04' %}أبريل{% when '05' %}مايو{%
+          when '06' %}يونيو {% when '07' %}يوليو{% when '08' %}أغسطس{% when '09'
+          %}سبتمبر {% when '10' %}أكتوبر{% when '11' %}نوفمبر{% when '12'
+          %}ديسمبر {% endcase %} {{ page.date | date: "%Y" }}
+        </time>
+      </div>
+      {% if page.toc %}
+      <div
+        class="toc-wrapper w-fit my-8 p-6 bg-white border border-gray-200 rounded-xl shadow-sm sm:ml-auto sm:mr-auto lg:ml-0 lg:mr-0"
+      >
+        <div class="flex items-center mb-4 border-b border-gray-100 pb-3">
+          <svg
+            class="w-5 h-5 ml-2 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h7"
+            ></path>
+          </svg>
+          <span class="text-lg font-bold text-gray-800">فهرس المحتويات</span>
+        </div>
+
+        <div class="toc-content">{{ content | toc_only }}</div>
+      </div>
+      {% endif %}
+      <div class="prose lg:prose-xl mt-3">{{ content }}</div>
+    </article>
+  </div>
+  <!-- prev_post and  next_post -->
+  <div class="container w-[93%] sm:max-w-247.5 mr-auto ml-auto mt-5 min-w-3xs">
+    {% assign category = page.categories.first %} {% assign category_posts =
+    site.categories[category] %} {% if category_posts %} {% assign
+    category_posts = category_posts | sort: 'date' | reverse %} {% endif %} {%
+    for post in category_posts %} {% if post.url == page.url %} {% assign
+    prev_index = forloop.index0 | plus: 1 %} {% assign next_index =
+    forloop.index0 | minus: 1 %} {% if prev_index < category_posts.size %} {%
+    assign prev_post = category_posts[prev_index] %} {% endif %} {% if
+    next_index >= 0 %} {% assign next_post = category_posts[next_index] %} {%
+    endif %} {% endif %} {% endfor %}
+
+    <div
+      class="flex flex-col sm:flex-row justify-between items-stretch gap-4 my-5 pt-2 border-t border-gray-100"
+    >
+      <div class="w-full sm:w-1/2">
+        {% if prev_post %}
+        <a
+          href="{{ prev_post.url }}"
+          class="group h-full flex flex-col p-4 border border-gray-200 rounded-xl hover:border-blue-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
+        >
+          <span class="text-xs text-gray-400 mb-2">→ المقال السابق</span>
+          <span
+            class="text-gray-800 font-bold group-hover:text-blue-600 transition-colors"
+            >{{ prev_post.title }}</span
+          >
+        </a>
+        {% else %}
+        <div
+          class="w-full flex flex-col p-4 border border-gray-200 rounded-xl bg-gray-50"
+        >
+          <span class="text-xs text-gray-400 mb-2">→ المقال السابق</span>
+          <span class="text-gray-400 font-medium">لا توجد مقالات سابقة</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="w-full sm:w-1/2">
+        {% if next_post %}
+        <a
+          href="{{ next_post.url }}"
+          class="group h-full flex flex-col p-4 border border-gray-300 rounded-xl hover:border-blue-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md md:text-left lg:text-left sm:text-center"
+        >
+          <span class="text-xs text-gray-400 mb-2">المقال التالي ←</span>
+          <span
+            class="text-gray-800 font-bold group-hover:text-blue-600 transition-colors"
+            >{{ next_post.title }}</span
+          >
+        </a>
+        {% else %}
+        <div
+          class="h-full flex flex-col p-4 border border-gray-200 rounded-xl bg-gray-50 text-left sm:text-right"
+        >
+          <span class="text-xs text-gray-400 mb-2">المقال التالي ←</span>
+          <span class="text-gray-400 font-medium">نهاية القسم</span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>

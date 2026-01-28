@@ -4,20 +4,92 @@
 
 body {
   background-color: #fff;
-  background-image: linear-gradient(#d6ffc0 1px, transparent 1px),
+  background-image:
+    linear-gradient(#d6ffc0 1px, transparent 1px),
     linear-gradient(90deg, #d6ffc0 1px, transparent 1px);
   background-size: 60px 60px;
   font-family: "Inter", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* لضمان عدم اختفاء العنوان تحت الـ Header الثابت لو عندك Header */
+h2, h3 {
+  scroll-margin-top: 100px;
+}
+
 /* HEADER */
 .inner-content {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 #btn-menu {
   display: none;
+}
+
+.article-body img {
+  max-width: 150px;
+  height: auto;
+}
+
+.article-body h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+/* تنسيق الحاوية الأساسي */
+.toc-content #toc {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: right;
+    direction: rtl;
+}
+
+/* تنسيق العناصر */
+.toc-content .toc-entry {
+    position: relative;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+/* تنسيق الروابط (الحالة الافتراضية) */
+.toc-content .toc-entry a {
+    color: #4b5563; /* رمادي */
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    background-color: white; /* عشان تغطي النقط اللي تحتها */
+    padding-left: 10px;
+    position: relative;
+    z-index: 5;
+    font-weight: 500;
+}
+
+/* تأثير الـ Hover و Active (تغيير اللون والخط) */
+.toc-content .toc-entry a:hover,
+.toc-content .toc-entry a:active,
+.toc-content .toc-entry a:focus {
+    color: #2563eb !important; /* أزرق */
+    text-decoration: underline !important;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+}
+
+/* النقط (الجدول) */
+.toc-content .toc-entry::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    border-bottom: 2px dotted #e5e7eb; /* نقط خفيفة */
+    z-index: 1;
 }
 
 @media (max-width: 760px) {

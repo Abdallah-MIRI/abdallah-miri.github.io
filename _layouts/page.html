@@ -1,5 +1,12 @@
----
-layout: default
----
-
-{{ content }}
+<!DOCTYPE html>
+<html dir="{% if site.directions %}{{ site.directions }}{% else %}ltr{% endif %}" lang="{{ page.lang | default: site.lang }}">
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <main class="page-style pt-[8em]">
+    {{ content }}
+  </main>
+  
+  {% include footer.html %}
+</body>
+</html>

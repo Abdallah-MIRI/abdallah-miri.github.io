@@ -1,0 +1,56 @@
+---
+layout: page
+title: "التصنيفات"
+description: "Posts categorized under {{ page.category }}."
+permalink: /categories/
+---
+<div class="container w-[95%] max-w-[1100px] mx-auto py-12">
+  
+  <header class="text-center mb-12">
+    <h1 class="text-4xl font-black tracking-tight" style="color: #0e2a4f;">التصنيفات</h1>
+    <div class="w-16 h-1.5 mx-auto mt-4 rounded-full" style="background-color: #b0ed8f;"></div>
+    <p class="text-gray-500 mt-4 text-sm font-medium">استكشف المقالات حسب التخصص</p>
+  </header>
+
+  <div class="flex flex-wrap justify-center gap-8">
+    {% assign categories_list = site.categories | sort %}
+    {% for category in categories_list %}
+      {% assign category_name = category[0] %}
+      {% assign posts_count = category[1] | size %}
+      {% capture category_slug %}{{ category_name | slugify }}{% endcapture %}
+
+      <div class="w-full sm:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)]">
+        <div class="h-full p-px rounded-2xl bg-gradient-to-br from-[#b0ed8f] to-transparent shadow-lg transition-transform duration-300 hover:-translate-y-2">
+          
+          <div class="h-full p-7 rounded-[calc(1rem-1px)] flex flex-col justify-between" style="background-color: #0e2a4f;">
+            
+            <div>
+              <div class="flex items-center mb-6 border-b border-white/10 pb-4">
+                <div class="p-2 rounded-lg ml-3" style="background-color: rgba(176, 237, 143, 0.1);">
+                  <svg class="w-6 h-6" style="color: #b0ed8f;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <span class="text-xl font-bold text-white">{{ category_name }}</span>
+              </div>
+
+              <p class="text-gray-300 text-sm leading-relaxed mb-8">
+                يحتوي هذا القسم على <span class="font-bold" style="color: #b0ed8f;">{{ posts_count }}</span> مقالات تقنية منشورة.
+              </p>
+            </div>
+
+            <a href="/categories/{{ category_slug }}/" 
+               class="flex items-center justify-center w-full py-3 px-4 font-black text-sm rounded-xl transition-all duration-300 hover:brightness-110 active:scale-95"
+               style="background-color: #b0ed8f; color: #0e2a4f;">
+              تصفح القسم الآن
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

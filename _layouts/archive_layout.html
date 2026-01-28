@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<main class="page-style mt-30">
+<div class="container max-w-247.5 mr-auto ml-auto min-w-3xs p-5 pt-0">
+  {% include breadcrumbs.html %}
+<header class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-2">
+        تصنيف: <span class="text-blue-600">{{ page.title }}</span>
+      </h1>
+      <p class="text-gray-500">استكشف أحدث المقالات في هذا القسم</p>
+      <div class="h-1 w-20 bg-blue-500 mx-auto mt-4 rounded-full"></div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for post in page.posts %}
+      <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden border border-gray-100 group">
+        
+        <div class="p-6 flex flex-col h-full">
+          <div class="flex items-center justify-between text-xs font-medium text-gray-400 mb-4">
+            <span>{{ post.date | date: "%Y/%m/%d" }}</span>
+            <span class="bg-gray-100 px-2 py-1 rounded text-blue-600">
+              {{ post.content | number_of_words }} كلمة
+            </span>
+          </div>
+
+          <h2 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+
+          <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+            {{ post.content | strip_html | truncatewords: 25 }}
+          </p>
+
+          <div class="mt-auto">
+            <a href="{{ post.url | relative_url }}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800">
+              اقرأ المزيد
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 transform rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+</div>
+</main>

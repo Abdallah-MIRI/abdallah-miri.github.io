@@ -2,11 +2,74 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description | escape }}{% else %}{{ site.description | escape }}{% endif %}">
+  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | escape }}{% else %}{{ site.keywords | escape }}{% endif %}">
+  <meta name="author" content="{{ site.author.name | escape }}">
+  <link rel="icon" href="{{ '/assets/image/b_logo.png' | relative_url }}" type="image/x-icon">
   <!-- _layouts/default.html -->
   <!-- <link rel="stylesheet" href="{{ '/assets/css/swiper-bundle.css' | relative_url }}"> -->
-  <link rel="stylesheet" href="/assets/css/reveal.css">
+  <!-- <link rel="stylesheet" href="/assets/css/reveal.css"> -->
   <!-- <link rel="stylesheet" href="{{ '/assets/css/splide.min.css' | relative_url }}"> -->
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/atom-one-dark.min.css' | relative_url }}"> -->
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-one-dark.min.css">
+
+<style>
+  /* حاوي الكود - شكل نافذة الماك */
+  .code-window {
+    border-radius: 12px;
+    background: #282c34;
+    margin: 2rem 0;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-top: 35px; /* مساحة للأزرار */
+    direction: ltr !important; /* إجبار الاتجاه من اليسار */
+  }
+
+  /* أزرار النافذة (أحمر، أصفر، أخضر) */
+  .code-window::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 12px;
+    height: 12px;
+    background: #ff5f56;
+    border-radius: 50%;
+    box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+    z-index: 2;
+  }
+
+  /* تنسيق محرك Prism */
+  pre[class*="language-"] {
+    margin: 0 !important;
+    border-radius: 0 0 12px 12px !important;
+    background: #282c34 !important;
+    font-family: 'Fira Code', 'Cascadia Code', monospace !important;
+    font-size: 14px !important;
+  }
+
+  /* تخصيص زر النسخ (Prism Copy Button) */
+  .copy-to-clipboard-button {
+    background: #3e4451 !important;
+    color: #abb2bf !important;
+    border-radius: 6px !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    border: none !important;
+    transition: all 0.2s;
+  }
+
+  .copy-to-clipboard-button:hover {
+    background: #61afef !important;
+    color: #fff !important;
+  }
+</style>
   <link rel="stylesheet" href="{{ '/assets/css/output.css' | relative_url }}">
+
+  <!-- <script src="{{ '/assets/js/highlight.min.js' | relative_url }}"></script> -->
 
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
